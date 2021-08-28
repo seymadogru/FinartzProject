@@ -6,6 +6,6 @@ import com.airport.model.Flight;
 
 public interface FlightInterface {
 
-	public List<Flight> findFlightByAirlineCompany(String airlineCompany);
+	public List<Flight> findFlightByAirlineCompanyName(String airlineCompanyName);
 	public Flight saveFlight(Flight flight);
 }

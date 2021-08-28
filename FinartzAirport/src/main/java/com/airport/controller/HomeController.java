@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airport.model.AirlineCompany;
 import com.airport.model.Airport;
+import com.airport.model.Flight;
+import com.airport.model.Route;
 import com.airport.serviceImplementation.AirlineCompanyServiceImpl;
 import com.airport.serviceImplementation.AirportServiceImpl;
+import com.airport.serviceImplementation.FlightServiceImpl;
+import com.airport.serviceImplementation.RouteServiceImpl;
 
 @RestController
 @RequestMapping("v1/rest")
@@ -72,5 +77,41 @@ public class HomeController {
 		airportServiceImpl.saveAirport(airport);
 		return airport;
 	}
+	
+	//Route Part
+	
+	@Autowired
+	private RouteServiceImpl routeServiceImpl;
+	
+	@GetMapping("/route/{departureAirport}/{landingAirport}")
+	@ResponseBody
+	public List<Route> getRouteByDepartureAirportAndLandingAirport(@PathVariable("departureAirport") String departureAirport,@PathVariable("landingAirport") String landingAirport) {
+		List<Route> route = routeServiceImpl.findByRouteDepartureAirportAndFlightLandingAirport(departureAirport, landingAirport);
+		return route;
+	}
+	
+	@PostMapping(value="saveRoute")
+	public Route saveRoute(@RequestBody Route route) {
+		routeServiceImpl.saveRoute(route);
+		return route;
+	}
+	
+	//Flight Part
+	
+	@Autowired
+	private FlightServiceImpl flightServiceImpl;
+	
+	@PostMapping(value="saveFlight")
+	public Flight saveFlight(@RequestBody Flight flight){
+		flightServiceImpl.saveFlight(flight);
+		return flight;
+	}
+	
+	@GetMapping("/Flight/{name}")
+	public List<Flight> getFlightByName(@PathVariable("name") String airlineCompanyName){
+		List<Flight> flight = flightServiceImpl.findFlightByAirlineCompanyName(airlineCompanyName);
+		return flight;
+	}
+	
 	
 }

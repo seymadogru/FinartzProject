@@ -15,17 +15,21 @@ public class FlightServiceImpl implements FlightInterface{
 	@Autowired
 	private FlightRepository flightRepository;
 	
-	@Override
-	public List<Flight> findFlightByAirlineCompany(String airlineCompanyName) {
-		
-		return flightRepository.findByAirlineCompanyName(airlineCompanyName);
-	}
+	
 
 	@Override
 	public Flight saveFlight(Flight flight) {
 		
 		return flightRepository.save(flight);
 		
+	}
+
+
+
+	@Override
+	public List<Flight> findFlightByAirlineCompanyName(String airlineCompanyName) {
+		
+		return flightRepository.findByAirlineCompanyName(airlineCompanyName);
 	}
 
 }
