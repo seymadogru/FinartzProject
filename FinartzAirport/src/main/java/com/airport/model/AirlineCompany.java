@@ -18,7 +18,7 @@ public class AirlineCompany {
 	@Column(name="name")			
 	private String name;			//havaalanı şirketi ismi
 	@Column(name="phone")
-	private int phone;				//şirket telefon no
+	private String phone;				//şirket telefon no
 	@Column(name="airport_name")
 	private String airportName;     //bulunduğu havaalanı ismi
 	
@@ -34,10 +34,10 @@ public class AirlineCompany {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getAirportName() {
@@ -46,7 +46,7 @@ public class AirlineCompany {
 	public void setAirportName(String airportName) {
 		this.airportName = airportName;
 	}
-	public AirlineCompany(int id, String name, int phone, String airportName) {
+	public AirlineCompany(int id, String name, String phone, String airportName) {
 		super();
 		this.id = id;
 		this.name = name;

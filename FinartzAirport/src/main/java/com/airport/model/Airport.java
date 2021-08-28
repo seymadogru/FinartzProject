@@ -20,7 +20,7 @@ public class Airport {
 	@Column(name="city")
 	private String city;				//havaalanının bulunduğu şehir
 	@Column(name="phone")
-	private int phone;					//havaalanı tel no
+	private String phone;					//havaalanı tel no
 	@Column(name="aircraft_capacity")
 	private int aircraftCapacity;		//uçak kapasitesi
 	public int getId() {
@@ -41,10 +41,10 @@ public class Airport {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public int getAircraftCapacity() {
@@ -53,7 +53,7 @@ public class Airport {
 	public void setAircraftCapacity(int aircraftCapacity) {
 		this.aircraftCapacity = aircraftCapacity;
 	}
-	public Airport(int id, String name, String city, int phone, int aircraftCapacity) {
+	public Airport(int id, String name, String city, String phone, int aircraftCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
