@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airport.model.AirlineCompany;
+import com.airport.model.Airport;
 import com.airport.serviceImplementation.AirlineCompanyServiceImpl;
+import com.airport.serviceImplementation.AirportServiceImpl;
 
 @RestController
 @RequestMapping("v1/rest")
@@ -49,7 +51,26 @@ public class HomeController {
 	}
 	
 	
+	//Airport Part
+	@Autowired
+	private AirportServiceImpl airportServiceImpl;
 	
+	@GetMapping("/AirportCity/{city}")
+	public List<Airport> getAirportByCity(@PathVariable("city") String city){
+		List<Airport> airport = airportServiceImpl.findAirportByCity(city);
+		return airport;
+	}
 	
+	@GetMapping("/Airport/{name}")
+	public Airport getAirportByName(@PathVariable("name") String name){
+		Airport airport = airportServiceImpl.findAirportByName(name);
+		return airport;
+	}
+	
+	@PostMapping(value="saveAirport")
+	public Airport saveAirport(@RequestBody Airport airport) {
+		airportServiceImpl.saveAirport(airport);
+		return airport;
+	}
 	
 }

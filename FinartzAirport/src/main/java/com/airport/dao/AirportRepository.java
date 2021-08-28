@@ -11,5 +11,5 @@ import com.airport.model.Airport;
 public interface AirportRepository extends CrudRepository<Airport , Integer>{
 
 	List<Airport> findByCity(String city);  //şehir girilince orada olan havalimanları listelenecek
-	List<Airport> findByName(String name);  //havalimanı ismi girince bilgileri dökülecek
+	Airport findByName(String name);  //havalimanı ismi girince bilgileri dökülecek
 }

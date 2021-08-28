@@ -7,6 +7,6 @@ import com.airport.model.Airport;
 public interface AirportInterface {
 
 	public List<Airport> findAirportByCity(String city);
-	public List<Airport> findAirportByName(String name);
+	public Airport findAirportByName(String name);
 	public Airport saveAirport(Airport airport);
 }

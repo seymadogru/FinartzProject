@@ -23,7 +23,6 @@ public class Airport {
 	private int phone;					//havaalanı tel no
 	@Column(name="aircraft_capacity")
 	private int aircraftCapacity;		//uçak kapasitesi
-	
 	public int getId() {
 		return id;
 	}
@@ -40,7 +39,7 @@ public class Airport {
 		return city;
 	}
 	public void setCity(String city) {
-		city = city;
+		this.city = city;
 	}
 	public int getPhone() {
 		return phone;
@@ -66,6 +65,7 @@ public class Airport {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	
 	
 }

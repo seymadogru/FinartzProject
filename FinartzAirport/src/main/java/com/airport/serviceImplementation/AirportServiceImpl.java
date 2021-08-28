@@ -22,9 +22,9 @@ public class AirportServiceImpl implements AirportInterface{
 	}
 
 	@Override
-	public List<Airport> findAirportByName(String name) {
+	public Airport findAirportByName(String name) {
 		
-		return airportRepository.findByCity(name);
+		return airportRepository.findByName(name);
 	}
 
 	@Override
