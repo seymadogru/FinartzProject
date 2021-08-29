@@ -1,6 +1,6 @@
 # FinartzProject
 Postman Requestleri
-
+-------------------------------------------------------------------------------------------------------------
 Havayolu şirketi kaydetme;
 http://localhost:8080/v1/rest/saveAirlineCompany   (Post)
 {
