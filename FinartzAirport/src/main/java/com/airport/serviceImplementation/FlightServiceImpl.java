@@ -1,5 +1,6 @@
 package com.airport.serviceImplementation;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,22 @@ public class FlightServiceImpl implements FlightInterface{
 	public List<Flight> findFlightByAirlineCompanyName(String airlineCompanyName) {
 		
 		return flightRepository.findByAirlineCompanyName(airlineCompanyName);
+	}
+
+
+
+	@Override
+	public List<Flight> findAllFlights() {
+		
+		return (List<Flight>) flightRepository.findAll();
+	}
+
+
+
+	@Override
+	public List<Flight> findFlightByDate(String date) {
+		
+		return flightRepository.findFlightByDate(date);
 	}
 
 }

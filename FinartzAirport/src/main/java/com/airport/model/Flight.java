@@ -17,12 +17,14 @@ public class Flight {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	@Column(name="flight_no")
+	private String flightNno;
 	@Column(name="airline_company_name")  
 	private String airlineCompanyName;    //havalimanı şirketi
 	@Column(name="departure_time")
 	private Double departureTime;         //kalkış saati
 	@Column(name="date")
-	private Date date;                    //kalkış tarihi
+	private String date;                    //kalkış tarihi
 	@Column(name="departure_airport")
 	private String departureAirport;      //kalkış havaalanı
 	@Column(name="landing_airport")
@@ -40,6 +42,15 @@ public class Flight {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	
+	
+	public String getFlightNno() {
+		return flightNno;
+	}
+	public void setFlightNno(String flightNno) {
+		this.flightNno = flightNno;
+	}
 	public String getAirlineCompanyName() {
 		return airlineCompanyName;
 	}
@@ -52,10 +63,10 @@ public class Flight {
 	public void setDepartureTime(Double departureTime) {
 		this.departureTime = departureTime;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getDepartureAirport() {
@@ -88,10 +99,13 @@ public class Flight {
 	public void setEconomyClassPrice(Double economyClassPrice) {
 		this.economyClassPrice = economyClassPrice;
 	}
-	public Flight(int id, String airlineCompanyName, Double departureTime, Date date, String departureAirport,
-			String landingAirport, Double travelTime, Double firstClassPrice, Double economyClassPrice) {
+	
+	public Flight(int id, String flightNno, String airlineCompanyName, Double departureTime, String date,
+			String departureAirport, String landingAirport, Double travelTime, Double firstClassPrice,
+			Double economyClassPrice) {
 		super();
 		this.id = id;
+		this.flightNno = flightNno;
 		this.airlineCompanyName = airlineCompanyName;
 		this.departureTime = departureTime;
 		this.date = date;
@@ -101,6 +115,7 @@ public class Flight {
 		this.firstClassPrice = firstClassPrice;
 		this.economyClassPrice = economyClassPrice;
 	}
+	
 	public Flight() {
 		super();
 		// TODO Auto-generated constructor stub
