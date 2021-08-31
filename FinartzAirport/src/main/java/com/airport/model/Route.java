@@ -25,7 +25,7 @@ public class Route {
 	@Column(name="departure_time")
 	private Double departureTime;     //kalkış saati
 	@Column(name="date")
-	private Date date;				  //kalkış tarihi	
+	private String date;				  //kalkış tarihi	
 	
 	public int getId() {
 		return id;
@@ -57,14 +57,14 @@ public class Route {
 	public void setDepartureTime(Double departureTime) {
 		this.departureTime = departureTime;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public Route(int id, String airlineCompany, String departureAirport, String landingAirport, Double departureTime,
-			Date date) {
+			String date) {
 		super();
 		this.id = id;
 		this.airlineCompany = airlineCompany;

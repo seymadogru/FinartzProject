@@ -79,8 +79,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/Airport/{name}")
-	public Airport getAirportByName(@PathVariable("name") String name){
-		Airport airport = airportServiceImpl.findAirportByName(name);
+	public List<Airport> getAirportByName(@PathVariable("name") String name){
+		List<Airport> airport = airportServiceImpl.findAirportByName(name);
 		return airport;
 	}
 	
