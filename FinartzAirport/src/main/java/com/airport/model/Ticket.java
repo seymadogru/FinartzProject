@@ -17,16 +17,16 @@ Ticket {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
-	@Column(name="name")      
-	private String name;
+	@Column(name="name")        
+	private String name;		  // yolcu ismi
 	@Column(name="surname")
-	private String surname;
+	private String surname;		  //yolcu soyadı
 	@Column(name="tc_kimlik_no")
-	private String tcKimlikNo;
+	private String tcKimlikNo;    //yolcu tc kimlik no
 	@Column(name="hes_code")
-	private String hesCode;
+	private String hesCode;		  //yolcu hes kodu
 	@Column(name="flight_no")
-	private String flightNo;
+	private String flightNo;	  //yolcunun binmek istediği uçuş no
 	
 	
 	

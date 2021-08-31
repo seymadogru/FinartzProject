@@ -20,7 +20,7 @@ public class Airport {
 	@Column(name="city")
 	private String city;				//havaalanının bulunduğu şehir
 	@Column(name="phone")
-	private String phone;					//havaalanı tel no
+	private String phone;				//havaalanı tel no
 	@Column(name="aircraft_capacity")
 	private int aircraftCapacity;		//uçak kapasitesi
 	public int getId() {

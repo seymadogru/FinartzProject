@@ -1,6 +1,5 @@
 package com.airport.model;
 
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,13 +17,13 @@ public class Flight {
 	@Column(name="id")
 	private int id;
 	@Column(name="flight_no")
-	private String flightNno;
+	private String flightNno;			  //uçuş numarası
 	@Column(name="airline_company_name")  
 	private String airlineCompanyName;    //havalimanı şirketi
 	@Column(name="departure_time")
 	private Double departureTime;         //kalkış saati
 	@Column(name="date")
-	private String date;                    //kalkış tarihi
+	private String date;                   //kalkış tarihi
 	@Column(name="departure_airport")
 	private String departureAirport;      //kalkış havaalanı
 	@Column(name="landing_airport")

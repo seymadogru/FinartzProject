@@ -18,7 +18,7 @@ public class AirlineCompany {
 	@Column(name="name")			
 	private String name;			//havaalanı şirketi ismi
 	@Column(name="phone")
-	private String phone;				//şirket telefon no
+	private String phone;			//şirket telefon no
 	@Column(name="airport_name")
 	private String airportName;     //bulunduğu havaalanı ismi
 	

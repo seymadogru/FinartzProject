@@ -10,6 +10,6 @@ import com.airport.model.Ticket;
 @Repository
 public interface TicketRepository extends CrudRepository<Ticket, Integer>{
 
-	List<Ticket> findTicketByFlightNo(String flightNo);
-	List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo);
+	List<Ticket> findTicketByFlightNo(String flightNo);   //Uçuş no'suna göre o uçuştaki yolcular listelenecek
+	List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo);  //tc kimlik no'suna göre bilet görüntüleme
 }

@@ -17,6 +17,7 @@ public class TicketServiceImpl implements TicketInterface{
 
 	
 
+	//bilet kaydetme
 	@Override
 	public Ticket saveTicket(Ticket ticket) {
 		
@@ -25,6 +26,7 @@ public class TicketServiceImpl implements TicketInterface{
 
 
 
+	//uçuş no'su girilerek alınmış biletleri gösterme
 	@Override
 	public List<Ticket> findTicketByFlightNo(String flightNo) {
 		
@@ -33,6 +35,7 @@ public class TicketServiceImpl implements TicketInterface{
 
 
 
+	//tc kimlik no ile alınan bileti görüntüleme
 	@Override
 	public List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo) {
 		
@@ -40,7 +43,8 @@ public class TicketServiceImpl implements TicketInterface{
 	}
 
 
-
+	
+	//oluşturulmuş bileti silme
 	@Override
 	public void deleteTicket(int id) {
 		ticketRepository.deleteById(id);

@@ -15,6 +15,7 @@ public class RouteServiceImpl implements RouteInterface{
 	@Autowired
 	private RouteRepository routeRepository;
 	
+	//kalkış ve iniş havalimanları girilerek rotayı görme
 	@Override
 	public List<Route> findByRouteDepartureAirportAndFlightLandingAirport(String departureAirport,
 			String landingAirport) {
@@ -22,6 +23,7 @@ public class RouteServiceImpl implements RouteInterface{
 		return routeRepository.findByDepartureAirportAndLandingAirport(departureAirport, landingAirport);
 	}
 
+	//rota kaydetme
 	@Override
 	public Route saveRoute(Route route) {
 		

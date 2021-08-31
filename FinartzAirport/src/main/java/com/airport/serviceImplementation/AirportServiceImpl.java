@@ -15,18 +15,21 @@ public class AirportServiceImpl implements AirportInterface{
 	@Autowired
 	private AirportRepository airportRepository;
 	
+	//girilen şehirdeki havaalanlarını listeleme
 	@Override
 	public List<Airport> findAirportByCity(String city) {
 		
 		return airportRepository.findByCity(city);
 	}
 
+	//girilen havalimanı ismine göre havalimanı hakkında bilgi verme
 	@Override
 	public List<Airport> findAirportByName(String name) {
 		
 		return airportRepository.findByName(name);
 	}
 
+	//havalimanı kaydetme
 	@Override
 	public Airport saveAirport(Airport airport) {
 		

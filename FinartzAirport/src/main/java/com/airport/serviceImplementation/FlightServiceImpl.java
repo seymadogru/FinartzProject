@@ -1,6 +1,6 @@
 package com.airport.serviceImplementation;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class FlightServiceImpl implements FlightInterface{
 	private FlightRepository flightRepository;
 	
 	
-
+	//havayolu şirketine uçuş bilgisi kaydetme
 	@Override
 	public Flight saveFlight(Flight flight) {
 		
@@ -26,7 +26,7 @@ public class FlightServiceImpl implements FlightInterface{
 	}
 
 
-
+	//havayolu şirketi ismi girilerek üzerine kayıtlı uçuşları görme
 	@Override
 	public List<Flight> findFlightByAirlineCompanyName(String airlineCompanyName) {
 		
@@ -35,6 +35,7 @@ public class FlightServiceImpl implements FlightInterface{
 
 
 
+	//tüm uçuşları görüntüleme
 	@Override
 	public List<Flight> findAllFlights() {
 		
@@ -43,6 +44,7 @@ public class FlightServiceImpl implements FlightInterface{
 
 
 
+	//tarih girilerek o tarihteki uçuşları görme
 	@Override
 	public List<Flight> findFlightByDate(String date) {
 		

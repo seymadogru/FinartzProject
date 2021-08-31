@@ -1,6 +1,6 @@
 package com.airport.model;
 
-import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +25,7 @@ public class Route {
 	@Column(name="departure_time")
 	private Double departureTime;     //kalkış saati
 	@Column(name="date")
-	private String date;				  //kalkış tarihi	
+	private String date;			  //kalkış tarihi	
 	
 	public int getId() {
 		return id;
