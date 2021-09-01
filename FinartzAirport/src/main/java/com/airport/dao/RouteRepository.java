@@ -11,6 +11,6 @@ import com.airport.model.Route;
 public interface RouteRepository extends CrudRepository<Route, Integer>{
 
 	
-	List<Route> findByDepartureAirportAndLandingAirport(String departureAirport,String landingAirport);
+	List<Route> findByDepartureAirportIdAndLandingAirportId(Integer departureAirport,Integer landingAirport);
 	//kalkış ve iniş havalimanları girildiğinde o rotada bulunan uçak bilgileri verilecek.
 }

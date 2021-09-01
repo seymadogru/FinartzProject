@@ -1,15 +1,23 @@
 package com.airport.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
 @Table(name="route")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Route {
 
 	@Id
@@ -18,10 +26,12 @@ public class Route {
 	private int id;
 	@Column(name="airline_company")
 	private String airlineCompany;    //havaalanı şirketi
-	@Column(name="departure_airport")
-	private String departureAirport;  //kalkış havaalanı
-	@Column(name="landing_airport")
-	private String landingAirport;    //iniş havaalanı
+	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
+	@JoinColumn(name="departure_airport_id")
+	private Airport departureAirport;  //kalkış havaalanı
+	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
+	@JoinColumn(name="landing_airport_id")
+	private Airport landingAirport;    //iniş havaalanı
 	@Column(name="departure_time")
 	private Double departureTime;     //kalkış saati
 	@Column(name="date")
@@ -39,16 +49,17 @@ public class Route {
 	public void setAirlineCompany(String airlineCompany) {
 		this.airlineCompany = airlineCompany;
 	}
-	public String getDepartureAirport() {
+	
+	public Airport getDepartureAirport() {
 		return departureAirport;
 	}
-	public void setDepartureAirport(String departureAirport) {
+	public void setDepartureAirport(Airport departureAirport) {
 		this.departureAirport = departureAirport;
 	}
-	public String getLandingAirport() {
+	public Airport getLandingAirport() {
 		return landingAirport;
 	}
-	public void setLandingAirport(String landingAirport) {
+	public void setLandingAirport(Airport landingAirport) {
 		this.landingAirport = landingAirport;
 	}
 	public Double getDepartureTime() {
@@ -63,7 +74,8 @@ public class Route {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public Route(int id, String airlineCompany, String departureAirport, String landingAirport, Double departureTime,
+	
+	public Route(int id, String airlineCompany, Airport departureAirport, Airport landingAirport, Double departureTime,
 			String date) {
 		super();
 		this.id = id;

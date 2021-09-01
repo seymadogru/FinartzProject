@@ -1,15 +1,22 @@
 package com.airport.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="Ticket")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class 
 Ticket {
 
@@ -25,23 +32,46 @@ Ticket {
 	private String tcKimlikNo;    //yolcu tc kimlik no
 	@Column(name="hes_code")
 	private String hesCode;		  //yolcu hes kodu
-	@Column(name="flight_no")
-	private String flightNo;	  //yolcunun binmek istediği uçuş no
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.MERGE)
+	@JoinColumn(name="flight_id")
+	private Flight flight;	  //yolcunun binmek istediği uçuş no
 	
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="credit_card_id")
+	private CreditCard creditCard;
+	
+	@Column(name="price")
+	private Double price;
+	
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+	
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 	
 	
 
-	public String getFlightNo() {
-		return flightNo;
+	
+
+
+
+	public Double getPrice() {
+		return price;
 	}
 
-
-
-	public void setFlightNo(String flightNo) {
-		this.flightNo = flightNo;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
+	public Flight getFlight() {
+		return flight;
+	}
 
+	public void setFlight(Flight flight) {
+		this.flight = flight;
+	}
 
 	public int getId() {
 		return id;
@@ -107,22 +137,22 @@ Ticket {
 
 
 
-	
 
 
 
 
-	public Ticket(int id, String name, String surname, String tcKimlikNo, String hesCode, String flightNo) {
+	public Ticket(int id, String name, String surname, String tcKimlikNo, String hesCode, Flight flight,
+			CreditCard creditCard, Double price) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.tcKimlikNo = tcKimlikNo;
 		this.hesCode = hesCode;
-		this.flightNo = flightNo;
+		this.flight = flight;
+		this.creditCard = creditCard;
+		this.price = price;
 	}
-
-
 
 	public Ticket() {
 		super();

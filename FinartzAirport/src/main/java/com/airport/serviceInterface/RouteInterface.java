@@ -6,6 +6,6 @@ import com.airport.model.Route;
 
 public interface RouteInterface {
 
-	public List<Route> findByRouteDepartureAirportAndFlightLandingAirport(String departureAirport,String landingAirport);
+	public List<Route> findByRouteDepartureAirportIdAndFlightLandingAirportId(Integer departureAirport,Integer landingAirport);
 	public Route saveRoute(Route route);
 }

@@ -20,6 +20,7 @@ import com.airport.dao.RouteRepository;
 import com.airport.dao.TicketRepository;
 import com.airport.model.AirlineCompany;
 import com.airport.model.Airport;
+import com.airport.model.CreditCard;
 import com.airport.model.Flight;
 import com.airport.model.Route;
 import com.airport.model.Ticket;
@@ -41,7 +42,7 @@ public class HomeControllerTest {
 	
 	@Test
 	public void saveAirlineCompanyTest() {
-		AirlineCompany airlineCompany = new AirlineCompany(1,"Pegasus","0546468525","İstanbul Havalimanı");
+		AirlineCompany airlineCompany = new AirlineCompany(1,"Pegasus","0546468525","İstanbul Havalimanı", null);
 		when(airlineCompanyRepository.save(airlineCompany)).thenReturn(airlineCompany);
 		assertEquals(airlineCompany, airlineCompanyService.saveAirlineCompany(airlineCompany));
 		
@@ -50,7 +51,7 @@ public class HomeControllerTest {
 	@Test
 	public void getAirlineCompanyByNameTest() {
 		String name = "İstanbul Havalimanı";
-		when(airlineCompanyRepository.findByName(name)).thenReturn(Stream.of(new AirlineCompany(1,"Pegasus","0546468525","abc")).collect(Collectors.toList()));
+		when(airlineCompanyRepository.findByName(name)).thenReturn(Stream.of(new AirlineCompany(1,"Pegasus","0546468525","abc", null)).collect(Collectors.toList()));
 		assertEquals(1, airlineCompanyService.findAirlineCompanyByName(name).size());
 	}
 	
@@ -58,7 +59,7 @@ public class HomeControllerTest {
 	@Test
 	public void getAirlineCompanyByAirportNameTest() {
 		String airportName="Sabiha Gökçen Havalimanı";
-		when(airlineCompanyRepository.findByAirportName(airportName)).thenReturn(Stream.of(new AirlineCompany(1,"Pegasus","0546468525","abc")).collect(Collectors.toList()));
+		when(airlineCompanyRepository.findByAirportName(airportName)).thenReturn(Stream.of(new AirlineCompany(1,"Pegasus","0546468525","abc", null)).collect(Collectors.toList()));
 		assertEquals(1, airlineCompanyService.findAirlineCompanyByAirportName(airportName).size());
 	}
 	
@@ -104,16 +105,37 @@ public class HomeControllerTest {
 
 	@Test
 	public void getRouteByDepartureAirportAndLandingAirportTest() {
-		String departureAirport ="İstanbul havalimanı";
-		String landingAirport = "Esenboğa Havalimanı";
-		when(routeRepository.findByDepartureAirportAndLandingAirport(departureAirport, landingAirport)).thenReturn(Stream.of(new Route(1,"Pegasus","İstanbul Havalimanı","Esenboğa Havalimanı",12.50,"2021-12-12")).collect(Collectors.toList()));
-		assertEquals(1,routeServiceImpl.findByRouteDepartureAirportAndFlightLandingAirport(departureAirport, landingAirport).size());
+		int departureAirportId =2;
+		int landingAirportId = 3;
+		Airport airport1 = new Airport();
+		airport1.setAircraftCapacity(12);
+		airport1.setCity("istanbul");
+		airport1.setId(1);
+		airport1.setName("istanbul");
+		airport1.setPhone("12387798");
+		
+		Airport airport2 = new Airport();
+		airport2.setAircraftCapacity(12);
+		airport2.setCity("istanbul");
+		airport2.setId(1);
+		airport2.setName("istanbul");
+		airport2.setPhone("12387798");
+		
+		when(routeRepository.findByDepartureAirportIdAndLandingAirportId(departureAirportId,landingAirportId)).thenReturn(Stream.of(new Route(1,"Pegasus",airport1,airport2,12.50,"2021-12-12")).collect(Collectors.toList()));
+		assertEquals(1,routeServiceImpl.findByRouteDepartureAirportIdAndFlightLandingAirportId(2, 3).size());
 	}
 	
 
 	@Test
 	public void saveRouteTest() {
-		Route route = new Route(1,"Pegasus","İstanbul Havalimanı","Esenboğa Havalimanı",12.50,"2021-12-12");
+		Route route = new Route();
+		route.setAirlineCompany("Pegasus");
+		route.setDate("2022-12-06");
+		route.setDepartureAirport(null);
+		route.setDepartureTime(1.15);
+		route.setId(1);
+		route.setLandingAirport(null);
+		
 		when(routeRepository.save(route)).thenReturn(route);
 		assertEquals(route, routeServiceImpl.saveRoute(route));
 	}
@@ -128,7 +150,16 @@ public class HomeControllerTest {
 	
 	@Test
 	public void saveFlight() {
-		Flight flight = new Flight(1,"abcd12234","Pegasus",12.50,"2021-02-05","İst Havalimanı","Esenboğa",1.45,150.25,250.15);
+		Flight flight = new Flight();
+		flight.setAirlineCompany(null);
+		flight.setCapacity(10);
+		flight.setDate("2021-10-21");
+		flight.setDepartureTime(10.38);
+		flight.setId(1);
+		flight.setPrice(105.25);
+		flight.setRoute(null);
+		flight.setTicketList(null);
+		flight.setTravelTime(1.35);
 		when(flightRepository.save(flight)).thenReturn(flight);
 		assertEquals(flight, flightServiceImpl.saveFlight(flight));
 	}
@@ -137,21 +168,52 @@ public class HomeControllerTest {
 	@Test
 	public void getFlightByNameTest() {
 		String name="Pegasus";
-		when(flightRepository.findByAirlineCompanyName(name)).thenReturn(Stream.of(new Flight(1,"abcd12234","Pegasus",12.50,"2021-02-05","İst Havalimanı","Esenboğa",1.45,150.25,250.15)).collect(Collectors.toList()));
+		Flight flight = new Flight();
+		flight.setAirlineCompany(null);
+		flight.setCapacity(10);
+		flight.setDate("2021-10-21");
+		flight.setDepartureTime(10.38);
+		flight.setId(1);
+		flight.setPrice(105.25);
+		flight.setRoute(null);
+		flight.setTicketList(null);
+		flight.setTravelTime(1.35);
+		when(flightRepository.findByAirlineCompanyName(name)).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
 		assertEquals(1,flightServiceImpl.findFlightByAirlineCompanyName(name).size());
 	}
 	
 	@Test
 	public void getAllFlightsTest() {
-		when(flightRepository.findAll()).thenReturn(Stream.of(new Flight(1,"abcd12234","Pegasus",12.50,"2021-02-05","İst Havalimanı","Esenboğa",1.45,150.25,250.15), new Flight(1,"cvds4567","THY",12.50,"2021-02-05","İst Havalimanı","Esenboğa",1.45,150.25,250.15)).collect(Collectors.toList()));
-		assertEquals(2, flightServiceImpl.findAllFlights().size());
+		Flight flight = new Flight();
+		flight.setAirlineCompany(null);
+		flight.setCapacity(10);
+		flight.setDate("2021-10-21");
+		flight.setDepartureTime(10.38);
+		flight.setId(1);
+		flight.setPrice(105.25);
+		flight.setRoute(null);
+		flight.setTicketList(null);
+		flight.setTravelTime(1.35);
+		when(flightRepository.findAll()).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
+		assertEquals(1, flightServiceImpl.findAllFlights().size());
 	}
 	
 	
 	@Test
 	public void getFlightByDateTest() {
 		String date = "2021-12-12";
-		when(flightRepository.findFlightByDate(date)).thenReturn(Stream.of(new Flight(1,"abcd12234","Pegasus",12.50,"2021-12-12","İst Havalimanı","Esenboğa",1.45,150.25,250.15)).collect(Collectors.toList()));
+		Flight flight = new Flight();
+		flight.setAirlineCompany(null);
+		flight.setCapacity(10);
+		flight.setDate("2021-10-21");
+		flight.setDepartureTime(10.38);
+		flight.setId(1);
+		flight.setPrice(105.25);
+		flight.setRoute(null);
+		flight.setTicketList(null);
+		flight.setTravelTime(1.35);
+		
+		when(flightRepository.findFlightByDate(date)).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
 		assertEquals(1,flightServiceImpl.findFlightByDate(date).size());
 	}
 	
@@ -164,7 +226,11 @@ public class HomeControllerTest {
 	
 	@Test
 	public void saveTicketTest() {
-		Ticket ticket = new Ticket(1,"Şeyma","Doğru","123456789","abs45sdx","abcd1234");
+		
+		CreditCard creditCard = new CreditCard();
+		creditCard.setCreditCardNo("1234567812345678");
+		
+		Ticket ticket = new Ticket(1,"abc","dfj","sdf","jsk",null,creditCard,12.5);
 		when(ticketRepository.save(ticket)).thenReturn(ticket);
 		assertEquals(ticket, ticketServiceImpl.saveTicket(ticket));
 		
@@ -172,25 +238,22 @@ public class HomeControllerTest {
 	
 	@Test
 	public void getTicketByFlightNo() {
-		String flightNo = "abcd1234";
-		when(ticketRepository.findTicketByFlightNo(flightNo)).thenReturn(Stream.of(new Ticket(1,"Şeyma","Doğru","123456789","abs45sdx","abcd1234")).collect(Collectors.toList()));
-		assertEquals(1,ticketServiceImpl.findTicketByFlightNo(flightNo).size());
+		int id = 1;
+		Ticket ticket = new Ticket();
+		when(ticketRepository.findTicketById(id)).thenReturn(Stream.of(ticket).collect(Collectors.toList()));
+		assertEquals(1,ticketServiceImpl.findTicketById(1).size());
 	}
 	
-	@Test
-	public void getTicketByTcKimlikNoTest() {
-		String tcKimlikNo = "123456789";
-		when(ticketRepository.findTicketByTcKimlikNo(tcKimlikNo)).thenReturn(Stream.of(new Ticket(1,"Şeyma","Doğru","123456789","abs45sdx","abcd1234")).collect(Collectors.toList()));
-		assertEquals(1,ticketServiceImpl.findTicketByTcKimlikNo(tcKimlikNo).size());
-	}
+	
 	
 	
 	@Test
 	public void deleteTicketTest() {
-		Ticket ticket = new Ticket(1,"Şeyma","Doğru","123456789","abs45sdx","abcd1234");
+		Ticket ticket = new Ticket();
+		
 		when(ticketRepository.save(ticket)).thenReturn(ticket);
 		ticketServiceImpl.deleteTicket(1);
-		assertEquals(0, ticketServiceImpl.findTicketByFlightNo("abs45sdx").size());
+		assertEquals(0, ticketServiceImpl.findTicketById(1).size());
 	}
 	
 	

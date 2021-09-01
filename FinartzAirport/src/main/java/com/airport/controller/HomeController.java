@@ -115,8 +115,8 @@ public class HomeController {
 	//kalkış ve iniş havalimanları girilerek rotayı görme
 	@GetMapping("/route/{departureAirport}/{landingAirport}")
 	@ResponseBody
-	public List<Route> getRouteByDepartureAirportAndLandingAirport(@PathVariable("departureAirport") String departureAirport,@PathVariable("landingAirport") String landingAirport) {
-		List<Route> route = routeServiceImpl.findByRouteDepartureAirportAndFlightLandingAirport(departureAirport, landingAirport);
+	public List<Route> getRouteByDepartureAirportAndLandingAirport(@PathVariable("departureAirport") Integer departureAirport,@PathVariable("landingAirport") Integer landingAirport) {
+		List<Route> route = routeServiceImpl.findByRouteDepartureAirportIdAndFlightLandingAirportId(departureAirport, landingAirport);
 		return route;
 	}
 	
@@ -181,18 +181,13 @@ public class HomeController {
 	}
 	
 	//uçuş no'su girilerek alınmış biletleri gösterme
-	@GetMapping("/ticketOwners/{flightNo}")
-	public List<Ticket> getTicketByFlightNo(@PathVariable("flightNo") String flightNo){
-		List<Ticket> ticket = ticketServiceImpl.findTicketByFlightNo(flightNo);
+	@GetMapping("/ticketOwners/{id}")
+	public List<Ticket> getTicketByFlightNo(@PathVariable("id") Integer id){
+		List<Ticket> ticket = ticketServiceImpl.findTicketById(id);
 		return ticket;
 	}
 	
-	//tc kimlik no ile alınan bileti görüntüleme
-	@GetMapping("/ticketInformation/{tcKimlikNo}")
-	public List<Ticket> getTicketByTcKimlikNo(@PathVariable("tcKimlikNo") String tcKimlikNo){
-		List<Ticket> ticket = ticketServiceImpl.findTicketByTcKimlikNo(tcKimlikNo);
-		return ticket;
-	}
+	
 	
 	//oluşturulmuş bileti silme
 	@DeleteMapping("deleteTicket")

@@ -20,7 +20,20 @@ public class TicketServiceImpl implements TicketInterface{
 	//bilet kaydetme
 	@Override
 	public Ticket saveTicket(Ticket ticket) {
+		String regex = "[^0-9]";
 		
+		ticket.getCreditCard().setCreditCardNo(ticket.getCreditCard().getCreditCardNo().replaceAll(regex, ""));
+		String card = ticket.getCreditCard().getCreditCardNo();
+		String cardFirstPart = card.substring(0, 6);
+		String cardSecondPart = "******";
+		String cardThirdPart = card.substring(12, 16);
+		
+//		int ticketCount = ticket.getFlight().getTicketList().size();
+//		int capacity = ticket.getFlight().getCapacity();
+//		double price = ticket.getFlight().getPrice();
+//		int temp = (ticketCount/capacity);
+//		ticket.setPrice(price*temp+price);
+		ticket.getCreditCard().setCreditCardNo(cardFirstPart+cardSecondPart+cardThirdPart);		
 		return ticketRepository.save(ticket);
 	}
 
@@ -28,9 +41,9 @@ public class TicketServiceImpl implements TicketInterface{
 
 	//uçuş no'su girilerek alınmış biletleri gösterme
 	@Override
-	public List<Ticket> findTicketByFlightNo(String flightNo) {
+	public List<Ticket> findTicketById(Integer id) {
 		
-		return ticketRepository.findTicketByFlightNo(flightNo);
+		return ticketRepository.findTicketById(id);
 	}
 
 

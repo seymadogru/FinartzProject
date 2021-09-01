@@ -17,10 +17,10 @@ public class RouteServiceImpl implements RouteInterface{
 	
 	//kalkış ve iniş havalimanları girilerek rotayı görme
 	@Override
-	public List<Route> findByRouteDepartureAirportAndFlightLandingAirport(String departureAirport,
-			String landingAirport) {
+	public List<Route> findByRouteDepartureAirportIdAndFlightLandingAirportId(Integer departureAirport,
+			Integer landingAirport) {
 		
-		return routeRepository.findByDepartureAirportAndLandingAirport(departureAirport, landingAirport);
+		return routeRepository.findByDepartureAirportIdAndLandingAirportId(departureAirport, landingAirport);
 	}
 
 	//rota kaydetme

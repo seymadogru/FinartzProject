@@ -6,7 +6,7 @@ import com.airport.model.Ticket;
 
 public interface TicketInterface {
 
-	public List<Ticket> findTicketByFlightNo(String flightNo);
+	public List<Ticket> findTicketById(Integer id);
 	public Ticket saveTicket(Ticket ticket);
 	public List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo);
 	public void deleteTicket(int id);
