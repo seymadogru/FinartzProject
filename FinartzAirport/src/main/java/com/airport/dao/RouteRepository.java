@@ -12,5 +12,5 @@ public interface RouteRepository extends CrudRepository<Route, Integer>{
 
 	
 	List<Route> findByDepartureAirportIdAndLandingAirportId(Integer departureAirport,Integer landingAirport);
-	//kalkış ve iniş havalimanları girildiğinde o rotada bulunan uçak bilgileri verilecek.
+	//kalkıs ve inis havalimanlari girildiginde o rotada bulunan ucak bilgileri verilecek.
 }

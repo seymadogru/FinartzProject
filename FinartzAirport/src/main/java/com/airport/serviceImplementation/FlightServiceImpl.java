@@ -17,7 +17,7 @@ public class FlightServiceImpl implements FlightInterface{
 	private FlightRepository flightRepository;
 	
 	
-	//havayolu şirketine uçuş bilgisi kaydetme
+	//havayolu sirketine uçus bilgisi kaydetme
 	@Override
 	public Flight saveFlight(Flight flight) {
 		
@@ -26,7 +26,7 @@ public class FlightServiceImpl implements FlightInterface{
 	}
 
 
-	//havayolu şirketi ismi girilerek üzerine kayıtlı uçuşları görme
+	//havayolu sirketi ismi girilerek uzerine kayıtlı uçusları gorme
 	@Override
 	public List<Flight> findFlightByAirlineCompanyName(String airlineCompanyName) {
 		
@@ -35,7 +35,7 @@ public class FlightServiceImpl implements FlightInterface{
 
 
 
-	//tüm uçuşları görüntüleme
+	//tum ucusları goruntuleme
 	@Override
 	public List<Flight> findAllFlights() {
 		
@@ -44,7 +44,7 @@ public class FlightServiceImpl implements FlightInterface{
 
 
 
-	//tarih girilerek o tarihteki uçuşları görme
+	//tarih girilerek o tarihteki ucusları gorme
 	@Override
 	public List<Flight> findFlightByDate(String date) {
 		

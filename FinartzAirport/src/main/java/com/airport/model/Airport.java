@@ -19,13 +19,13 @@ public class Airport {
 	@Column(name="id")
 	private int id;
 	@Column(name="name")      
-	private String name;				//havaalanı ismi
+	private String name;				//havaalani ismi
 	@Column(name="city")
-	private String city;				//havaalanının bulunduğu şehir
+	private String city;				//havaalaninin bulundugu şehir
 	@Column(name="phone")
-	private String phone;				//havaalanı tel no
+	private String phone;				//havaalani tel no
 	@Column(name="aircraft_capacity")
-	private int aircraftCapacity;		//uçak kapasitesi
+	private int aircraftCapacity;		//ucak kapasitesi
 	public int getId() {
 		return id;
 	}

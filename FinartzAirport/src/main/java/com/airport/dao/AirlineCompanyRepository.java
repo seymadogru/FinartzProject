@@ -10,7 +10,7 @@ import com.airport.model.AirlineCompany;
 @Repository
 public interface AirlineCompanyRepository extends CrudRepository<AirlineCompany , Integer>{
 
-	List<AirlineCompany> findByName(String name);  //şirket ismi girilince bilgiler dökülecek.
-	List<AirlineCompany> findByAirportName(String airportName);  //havaalanı ismi girilince oradaki şirketler listelenecek
+	List<AirlineCompany> findByName(String name);  //sirket ismi girilince bilgiler dokulecek.
+	List<AirlineCompany> findByAirportName(String airportName);  //havaalani ismi girilince oradaki sirketler listelenecek
 	
 }

@@ -11,6 +11,6 @@ import com.airport.model.Flight;
 @Repository
 public interface FlightRepository extends CrudRepository<Flight , Integer>{
 
-	List<Flight> findByAirlineCompanyName(String airlineCompanyName); //havayolu şirketi ismi girilince ona tanımlı uçuşlar listelenecek
-	List<Flight> findFlightByDate(String date);   //tarihe göre uçuşları listeleme
+	List<Flight> findByAirlineCompanyName(String airlineCompanyName); //havayolu sirketi ismi girilince ona tanimli uçuslar listelenecek
+	List<Flight> findFlightByDate(String date);   //tarihe gore uçusları listeleme
 }

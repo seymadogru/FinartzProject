@@ -10,6 +10,6 @@ import com.airport.model.Airport;
 @Repository
 public interface AirportRepository extends CrudRepository<Airport , Integer>{
 
-	List<Airport> findByCity(String city);  //şehir girilince orada olan havalimanları listelenecek
-	List<Airport> findByName(String name);  //havalimanı ismi girince bilgileri dökülecek
+	List<Airport> findByCity(String city);  //sehir girilince orada olan havalimanlari listelenecek
+	List<Airport> findByName(String name);  //havalimani ismi girince bilgileri dokulecek
 }

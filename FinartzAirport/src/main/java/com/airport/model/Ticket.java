@@ -27,21 +27,21 @@ Ticket {
 	@Column(name="name")        
 	private String name;		  // yolcu ismi
 	@Column(name="surname")
-	private String surname;		  //yolcu soyadı
+	private String surname;		  //yolcu soyadi
 	@Column(name="tc_kimlik_no")
 	private String tcKimlikNo;    //yolcu tc kimlik no
 	@Column(name="hes_code")
 	private String hesCode;		  //yolcu hes kodu
 	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.MERGE)
 	@JoinColumn(name="flight_id")
-	private Flight flight;	  //yolcunun binmek istediği uçuş no
+	private Flight flight;	    //ucus id
 	
 	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL)
 	@JoinColumn(name="credit_card_id")
-	private CreditCard creditCard;
+	private CreditCard creditCard;	//kredi kart bilgileri
 	
 	@Column(name="price")
-	private Double price;
+	private Double price;			//ucusa odenecek tutar
 	
 	public CreditCard getCreditCard() {
 		return creditCard;

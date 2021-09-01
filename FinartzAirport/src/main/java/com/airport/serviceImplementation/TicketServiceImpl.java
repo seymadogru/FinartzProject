@@ -39,7 +39,7 @@ public class TicketServiceImpl implements TicketInterface{
 
 
 
-	//uçuş no'su girilerek alınmış biletleri gösterme
+	//ticket id girilerek alınmıs bileti gorme
 	@Override
 	public List<Ticket> findTicketById(Integer id) {
 		
@@ -48,16 +48,8 @@ public class TicketServiceImpl implements TicketInterface{
 
 
 
-	//tc kimlik no ile alınan bileti görüntüleme
-	@Override
-	public List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo) {
-		
-		return ticketRepository.findTicketByTcKimlikNo(tcKimlikNo);
-	}
-
-
 	
-	//oluşturulmuş bileti silme
+	//olusturulmus bileti silme
 	@Override
 	public void deleteTicket(int id) {
 		ticketRepository.deleteById(id);

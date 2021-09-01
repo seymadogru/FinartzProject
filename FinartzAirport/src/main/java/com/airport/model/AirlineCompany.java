@@ -27,11 +27,11 @@ public class AirlineCompany {
 	@Column(name="id")
 	private int id;
 	@Column(name="name")			
-	private String name;			//havaalanı şirketi ismi
+	private String name;			//havaalani sirketi ismi
 	@Column(name="phone")
-	private String phone;			//şirket telefon no
+	private String phone;			//sirket telefon no
 	@Column(name="airport_name")
-	private String airportName;     //bulunduğu havaalanı ismi
+	private String airportName;     //bulundugu havaalani ismi
 	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
 	@JoinColumn(name="airline_company_id")
 	private List<Flight> flightList = new ArrayList<Flight>();

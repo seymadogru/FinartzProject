@@ -25,17 +25,17 @@ public class Route {
 	@Column(name="id")
 	private int id;
 	@Column(name="airline_company")
-	private String airlineCompany;    //havaalanı şirketi
+	private String airlineCompany;    //havaalani sirketi
 	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
 	@JoinColumn(name="departure_airport_id")
-	private Airport departureAirport;  //kalkış havaalanı
+	private Airport departureAirport;  //kalkıs havaalani
 	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
 	@JoinColumn(name="landing_airport_id")
-	private Airport landingAirport;    //iniş havaalanı
+	private Airport landingAirport;    //inis havaalani
 	@Column(name="departure_time")
-	private Double departureTime;     //kalkış saati
+	private Double departureTime;     //kalkıs saati
 	@Column(name="date")
-	private String date;			  //kalkış tarihi	
+	private String date;			  //kalkıs tarihi	
 	
 	public int getId() {
 		return id;

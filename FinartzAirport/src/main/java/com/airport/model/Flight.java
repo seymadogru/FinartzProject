@@ -30,23 +30,23 @@ public class Flight {
 	private int id;
 	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.MERGE)
 	@JoinColumn(name="airline_company_id")  
-	private AirlineCompany airlineCompany;    //havalimanı şirketi
+	private AirlineCompany airlineCompany;    //havalimani sirketi
 	@Column(name="departure_time")
-	private Double departureTime;         //kalkış saati
+	private Double departureTime;         //kalkıs saati
 	@Column(name="date")
-	private String date;                   //kalkış tarihi
+	private String date;                   //kalkıs tarihi
 	@ManyToOne(fetch = FetchType.LAZY ,cascade=CascadeType.MERGE)
-	@JoinColumn(name="route_id")
+	@JoinColumn(name="route_id")			//rota id
 	private Route route;
 	@Column(name="travel_time")
-	private Double travelTime;            //yolculuk süresi
+	private Double travelTime;            //yolculuk suresi
 	@Column(name="price")
-	private Double price;       // first class fiyatı
+	private Double price;      				//fiyat
 	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.MERGE)
 	@JoinColumn(name="flight_id")
-	private List<Ticket> ticketList = new ArrayList<Ticket>();
+	private List<Ticket> ticketList = new ArrayList<Ticket>();		//bilet listesi
 	@Column(name="capacity")
-	private int capacity;
+	private int capacity;			//yolcu kapasitesi
 	
 	
 	public int getCapacity() {

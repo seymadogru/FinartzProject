@@ -19,13 +19,13 @@ public class CreditCard {
 	@Column(name="id")
 	private int id;
 	@Column(name="credit_card_owner_name")
-	private String creditCardOwnerName;
+	private String creditCardOwnerName;        //kredi karti sahibinin ismi
 	@Column(name="credit_card_no")
-	private String creditCardNo;
+	private String creditCardNo;				//kredi kart no
 	@Column(name="credit_card_expiration_date")
-	private String creditCardExpirationDate;
+	private String creditCardExpirationDate;	//son kullanma tarihi
 	@Column(name="cvv")
-	private String cvv;
+	private String cvv;                         //cvv
 	public int getId() {
 		return id;
 	}

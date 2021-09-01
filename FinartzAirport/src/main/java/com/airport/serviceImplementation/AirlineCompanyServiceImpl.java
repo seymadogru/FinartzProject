@@ -16,21 +16,21 @@ public class AirlineCompanyServiceImpl implements AirlineCompanyInterface{
 	private AirlineCompanyRepository airlineCompanyRepository;
 	
 	
-	//girilen Havayolu şirketi ismine göre havayolu şirketinin bilgilerini listeleme
+	//girilen Havayolu sirketi ismine gore havayolu sirketinin bilgilerini listeleme
 	@Override
 	public List<AirlineCompany> findAirlineCompanyByName(String name) {
 		
 		return airlineCompanyRepository.findByName(name);
 	}
 
-	//girilen havaalanı ismine göre oradaki havayolu şirketlerini görüntüleme
+	//girilen havaalani ismine gore oradaki havayolu sirketlerini goruntuleme
 	@Override
 	public List<AirlineCompany> findAirlineCompanyByAirportName(String airportName) {
 		
 		return airlineCompanyRepository.findByAirportName(airportName);
 	}
 
-	//havayolu şirketi kaydetme
+	//havayolu sirketi kaydetme
 	@Override
 	public AirlineCompany saveAirlineCompany(AirlineCompany airlineCompany) {
 		

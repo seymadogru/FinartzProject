@@ -15,7 +15,7 @@ public class RouteServiceImpl implements RouteInterface{
 	@Autowired
 	private RouteRepository routeRepository;
 	
-	//kalkış ve iniş havalimanları girilerek rotayı görme
+	//kalkıs ve inis havalimanlari girilerek rotayi gorme
 	@Override
 	public List<Route> findByRouteDepartureAirportIdAndFlightLandingAirportId(Integer departureAirport,
 			Integer landingAirport) {

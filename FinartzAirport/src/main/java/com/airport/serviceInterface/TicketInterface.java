@@ -8,6 +8,5 @@ public interface TicketInterface {
 
 	public List<Ticket> findTicketById(Integer id);
 	public Ticket saveTicket(Ticket ticket);
-	public List<Ticket> findTicketByTcKimlikNo(String tcKimlikNo);
 	public void deleteTicket(int id);
 }
