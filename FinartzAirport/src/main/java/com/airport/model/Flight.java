@@ -42,9 +42,9 @@ public class Flight {
 	private Double travelTime;            //yolculuk suresi
 	@Column(name="price")
 	private Double price;      				//fiyat
-	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.MERGE)
-	@JoinColumn(name="flight_id")
-	private List<Ticket> ticketList = new ArrayList<Ticket>();		//bilet listesi
+//	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.MERGE)
+//	@JoinColumn(name="flight_id")
+//	private List<Ticket> ticketList = new ArrayList<Ticket>();		//bilet listesi
 	@Column(name="capacity")
 	private int capacity;			//yolcu kapasitesi
 	
@@ -55,12 +55,12 @@ public class Flight {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-	public List<Ticket> getTicketList() {
-		return ticketList;
-	}
-	public void setTicketList(List<Ticket> ticketList) {
-		this.ticketList = ticketList;
-	}
+//	public List<Ticket> getTicketList() {
+//		return ticketList;
+//	}
+//	public void setTicketList(List<Ticket> ticketList) {
+//		this.ticketList = ticketList;
+//	}
 	public int getId() {
 		return id;
 	}

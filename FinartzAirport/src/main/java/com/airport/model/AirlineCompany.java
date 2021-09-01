@@ -32,9 +32,9 @@ public class AirlineCompany {
 	private String phone;			//sirket telefon no
 	@Column(name="airport_name")
 	private String airportName;     //bulundugu havaalani ismi
-	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
-	@JoinColumn(name="airline_company_id")
-	private List<Flight> flightList = new ArrayList<Flight>();
+//	@OneToMany(fetch = FetchType.LAZY ,cascade=CascadeType.ALL)
+//	@JoinColumn(name="airline_company_id")
+//	private List<Flight> flightList = new ArrayList<Flight>();
 	
 	public int getId() {
 		return id;
@@ -44,12 +44,12 @@ public class AirlineCompany {
 	}
 	
 	
-	public List<Flight> getFlightList() {
-		return flightList;
-	}
-	public void setFlightList(List<Flight> flightList) {
-		this.flightList = flightList;
-	}
+//	public List<Flight> getFlightList() {
+//		return flightList;
+//	}
+//	public void setFlightList(List<Flight> flightList) {
+//		this.flightList = flightList;
+//	}
 	public String getName() {
 		return name;
 	}
@@ -75,7 +75,7 @@ public class AirlineCompany {
 		this.name = name;
 		this.phone = phone;
 		this.airportName = airportName;
-		this.flightList = flightList;
+		//this.flightList = flightList;
 	}
 	public AirlineCompany() {
 		super();

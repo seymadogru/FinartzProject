@@ -158,7 +158,6 @@ public class HomeControllerTest {
 		flight.setId(1);
 		flight.setPrice(105.25);
 		flight.setRoute(null);
-		flight.setTicketList(null);
 		flight.setTravelTime(1.35);
 		when(flightRepository.save(flight)).thenReturn(flight);
 		assertEquals(flight, flightServiceImpl.saveFlight(flight));
@@ -176,7 +175,6 @@ public class HomeControllerTest {
 		flight.setId(1);
 		flight.setPrice(105.25);
 		flight.setRoute(null);
-		flight.setTicketList(null);
 		flight.setTravelTime(1.35);
 		when(flightRepository.findByAirlineCompanyName(name)).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
 		assertEquals(1,flightServiceImpl.findFlightByAirlineCompanyName(name).size());
@@ -192,7 +190,6 @@ public class HomeControllerTest {
 		flight.setId(1);
 		flight.setPrice(105.25);
 		flight.setRoute(null);
-		flight.setTicketList(null);
 		flight.setTravelTime(1.35);
 		when(flightRepository.findAll()).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
 		assertEquals(1, flightServiceImpl.findAllFlights().size());
@@ -210,7 +207,6 @@ public class HomeControllerTest {
 		flight.setId(1);
 		flight.setPrice(105.25);
 		flight.setRoute(null);
-		flight.setTicketList(null);
 		flight.setTravelTime(1.35);
 		
 		when(flightRepository.findFlightByDate(date)).thenReturn(Stream.of(new Flight()).collect(Collectors.toList()));
